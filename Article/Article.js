@@ -112,3 +112,50 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+
+const articlesFn = (title, date, pOne, pTwo, pThree) => {
+
+  const articles = document.querySelector('.articles')
+
+  const articleContainer = document.createElement('div')
+  articleContainer.classList.add('article')
+
+  const articleHeader = document.createElement('h2')
+  articleHeader.textContent = title
+
+  const dateText = document.createElement('p')
+  dateText.classList.add('date')
+  dateText.textContent = date
+
+
+  const pTextOne = document.createElement('p')
+  pTextOne.textContent = pOne
+  const pTextTwo = document.createElement('p')
+  pTextTwo.textContent = pTwo
+  const pTextThree = document.createElement('p')
+  pTextThree.textContent = pThree
+
+  const btn = document.createElement('span')
+  btn.classList.add('expandButton')
+  btn.textContent = 'CLICK ME NOW'
+  btn.addEventListener('click', e => {
+    articleContainer.classList.toggle('article-open')
+  })
+
+  articles.appendChild(articleContainer)
+  articleContainer.appendChild(articleHeader)
+  articleContainer.appendChild(dateText)
+  articleContainer.appendChild(pTextOne)
+  articleContainer.appendChild(pTextTwo)
+  articleContainer.appendChild(pTextThree)
+  articleContainer.appendChild(btn)
+
+
+  return articles;
+
+}
+
+data.forEach((item) => {
+  articlesFn(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph)
+})
